@@ -1,0 +1,102 @@
+{>"layout" /}
+
+{<body}
+
+<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#formModal">Add post</button>
+
+
+{#posts}
+	<div class="well">
+		<h4>{title} <button class="btn btn-default pull-right"
+		data-toggle="collapse" data-target="#post_{id}" aria-expanded="false"
+		aria-controls="post_{id}"><span class="glyphicon glyphicon-triangle-bottom"></span></button></h4>
+
+		<div class="collapse" id="post_{id}">
+		{descr}
+		<br /><br />
+
+		<button class="btn btn-default edit-post" data-toggle="modal"
+		 data-target="#editformModal" data-id="{id}" data-title="{title}" data-descr="{descr}"><span class="glyphicon glyphicon-edit"></span></button>
+		<button class="btn btn-danger delete-post" data-id="{id}"><span class="glyphicon glyphicon-remove"></span></button>
+
+		</div>
+	</div>
+
+{/posts}
+
+<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#chartModal">Add chart</button>
+
+
+<div id="chartModal"  class="modal fade" role="dialog">
+<div id="container1" style="width: 700px; height: 400px; margin: 0 auto"></div>
+</div>
+
+
+
+
+<div id="formModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+
+	<div class="modal-content">
+		<form action="/add" method="post">
+			<div class="modal-header">
+			<h4 class="modal-title" id="myModalLabel">Post</h4>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+		</div>
+		<div class="modal-body">
+			<div class="form-group">
+				<label>Post title</label>
+				<input type="text" class="form-control" id="title" name="title">
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<input type="text" class="form-control" id="descr" name="descr">
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<input type="submit" class="btn btn-primary" value="Save" /></button>
+		</div>
+		</form>
+	</div>
+
+</div>
+</div>
+
+
+<div id="editformModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+
+	<div class="modal-content">
+		<form action="/edit" method="post">
+			<input type="hidden" class="form-control" id="editformid" name="id">
+			<div class="modal-header">
+			<h4 class="modal-title" id="myModalLabel">Post</h4>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+		</div>
+		<div class="modal-body">
+			<div class="form-group">
+				<label>Post title</label>
+				<input type="text" class="form-control" id="editformtitle" name="title">
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<input type="text" class="form-control" id="editformdescr" name="descr">
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<input type="submit" class="btn btn-primary" value="Save" /></button>
+		</div>
+		</form>
+	</div>
+
+</div>
+</div>
+
+
+{/body}
